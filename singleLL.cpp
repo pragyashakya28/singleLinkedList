@@ -23,23 +23,36 @@ template<typename T>
 class LinkedList
 {
 	Node<T>* head;
+
 	public:
 	LinkedList(){
 		head = NULL;
+	 
 	}
 
-	void insertNode(T val){
+	void insertAtPosition(T val, int position ){
 		Node<T>* newnode = new Node<T>(val);
-		if(head == NULL){
-			head = newnode;
-			return;
+
+		
+		if(head == NULL || position == 0){
+		  newnode->next = head;
+		  head = newnode;
+		  return;
 		}
 
-		Node<T>* temp = head;
-		while(temp->next!=NULL){
-			temp = temp->next;
+		Node<T>* current = head;
+		Node<T>* prev = NULL;
+		int cnt =0;
+
+	        //Traverse the list to the given position
+		while(current!=NULL && cnt < position){
+			prev=current;
+			current=current->next;
+                        cnt++;
 		}
-		temp->next = newnode;
+		prev->next = newnode;
+		newnode->next=current;
+
 	}
 
 	bool deleteNode(int index)
@@ -93,9 +106,9 @@ class LinkedList
 
 int main()
 {
-	LinkedList<float>  link;
- 	int choice, pos;
-	float value;
+	LinkedList<int>  link;
+ 	int choice, pos, insertpos;
+	int value;
 
         do{
 		cout<<"1. Insert element\n"
@@ -108,7 +121,9 @@ int main()
 			case 1: 
 				cout<<"Enter value to be inserted: ";
 				cin>>value;
-				link.insertNode(value);
+				cout<<"Enter position of node: ";
+				cin>>insertpos;
+				link.insertAtPosition(value,insertpos);
 				break;
 			case 2:
 				cout<<"Enter position of node to be deleted: ";
