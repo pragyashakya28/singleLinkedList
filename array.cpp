@@ -17,7 +17,7 @@ public:
         delete[] arr;
     }
 
-    void push(T data) {
+    void insert(T data) {
         if (size < capacity) {
             arr[size++] = data;
         } else {
@@ -25,7 +25,7 @@ public:
         }
     }
 
-    void pop(T data) {
+    void remove(T data) {
         int index = -1;
         for (int i = 0; i < size; ++i) {
             if (arr[i] == data) {
