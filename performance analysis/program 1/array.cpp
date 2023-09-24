@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <iostream>
 using namespace std;
 
@@ -74,3 +75,6 @@ public:
     
 //     return 0;
 // }
+=======
+
+>>>>>>> 566604b3c63f107e9e6858a839c628b579bc2a01
